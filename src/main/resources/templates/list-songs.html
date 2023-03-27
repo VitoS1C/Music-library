@@ -50,25 +50,41 @@
         </thead>
         <tbody>
         <tr th:each="song: ${songs}">
-            <td th:text="${song.singer}" />
-            <td th:text="${song.trackName}" />
-            <td th:text="${song.album}" />
-            <td th:text="${song.duration}" />
+            <td id="singer" th:text="${song.singer}"/>
+            <td id="trackName" th:text="${song.trackName}"/>
+            <td th:text="${song.album}"/>
+            <td th:text="${song.duration}"/>
             <td>
-                <a th:href="@{/showUpdateForm(songId=${song.id})}" class="btn btn-info">Update</a>
+                <a id="update" th:href="@{/showUpdateForm(songId=${song.id})}" class="btn btn-info">Update</a>
 
-                <a th:href="@{/deleteSong(songId=${song.id})}" class="btn btn-danger ml-2">Delete</a>
-            </td>
+                <a id="delete" th:href="@{/deleteSong(songId=${song.id})}" class="btn btn-danger ml-2">Delete</a>
+            <td/>
         </tr>
         </tbody>
-
     </table>
+
+    <form th:action="@{/deleteSong}" th:object="${action}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <input id="deleteDate" type="hidden" th:field="*{dateActions}">
+        <input id="deleteDescr" type="hidden" th:field="*{description}">
+    </form>
 </div>
+<script>
+    document.getElementById('delete').addEventListener('click', () => {
+        let singer = document.getElementById('singer').text;
+        let trackName = document.getElementById('trackName').text;
+        let input = "Удалена композиця " + "\"" + singer +"\" - " + "\"" + trackName + "\"";
+        let today = new Date();
+        let now = today.toLocaleString();
+        document.getElementById('deleteDescr').value = this.getAttribute(singer);
+        document.getElementById('deleteDate').value = now;
+    });
+</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $("#songTable").DataTable({
             'aoColumnDefs': [{
                 'bSortable': false,
@@ -77,4 +93,5 @@
         });
     })
 </script>
-</body></html>
+</body>
+</html>

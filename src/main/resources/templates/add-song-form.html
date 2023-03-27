@@ -37,11 +37,11 @@
     <h3>Add New Song</h3>
     <hr/>
 
-    <form th:action="@{/saveSong}" th:object="${song}" method="POST">
+    <form id="233" th:action="@{/saveSong}" th:object="${song}" method="POST">
 
-        <input type="text" th:field="*{singer}" class="form-control col-4 mb-4" placeholder="Enter Singer"/>
+        <input type="text" id="singer" th:field="*{singer}" class="form-control col-4 mb-4" placeholder="Enter Singer"/>
 
-        <input type="text" th:field="*{trackName}" class="form-control col-4 mb-4" placeholder="Enter Track name"/>
+        <input type="text" id="trackName" th:field="*{trackName}" class="form-control col-4 mb-4" placeholder="Enter Track name"/>
 
         <input type="text" th:field="*{album}" class="form-control col-4 mb-4" placeholder="Enter album"/>
 
@@ -51,20 +51,22 @@
 
         <form th:action="@{/saveSong}" th:object="${action}">
             <input type="hidden" th:field="*{dateActions}"/>
-            <input type="hidden" th:field="*{description}"/>
+            <input id="description" type="hidden" th:field="*{description}"/>
             <input type="hidden" th:field="*{id}"/>
-            <button type="submit" class="btn btn-primary col-2">Save</button>
+            <button id="press" type="submit" class="btn btn-primary col-2">Save</button>
         </form>
 
     </form>
-
-
-
-
-
     <hr/>
     <a th:href="@{/list}">Back to list</a>
 </div>
-
+<script>
+    document.getElementById('press').addEventListener('click', () =>{
+    let singer = document.getElementById('singer').value;
+    let trackName = document.getElementById('trackName').value;
+    let saveInput = "Добавлена новая композиция " + "\"" + singer +"\" - " + "\"" + trackName + "\"";
+    document.getElementById('description').value = saveInput;
+    });
+</script>
 </body>
 </html>

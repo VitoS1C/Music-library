@@ -1,7 +1,6 @@
 package lab_8.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
 
 @Setter
@@ -21,8 +20,7 @@ public class Action {
     @Column(nullable = false)
     private String description;
 
-    public Action(String dateActions, String description) {
+    public Action(String dateActions) {
         this.dateActions = dateActions;
-        this.description = description;
     }
 }
