@@ -7,10 +7,7 @@ import lab_8.repository.SongRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.text.SimpleDateFormat;
@@ -21,10 +18,14 @@ import java.util.Optional;
 @Controller
 public class SongController {
 
+    private final SongRepository songRepository;
+    private final ActionRepository actionRepository;
+
     @Autowired
-    private SongRepository songRepository;
-    @Autowired
-    private ActionRepository actionRepository;
+    public SongController(SongRepository songRepository, ActionRepository actionRepository) {
+        this.songRepository = songRepository;
+        this.actionRepository = actionRepository;
+    }
 
     @GetMapping("/list")
     public ModelAndView getAllSongs() {
@@ -32,7 +33,6 @@ public class SongController {
         ModelAndView mav = new ModelAndView("list-songs");
         Action action = new Action();
         mav.addObject("songs", songRepository.findAll());
-        mav.addObject("actions", songRepository.findAll());
         mav.addObject(action);
         return mav;
     }
@@ -83,19 +83,14 @@ public class SongController {
     }
 
     @GetMapping("/deleteSong")
-    public String deleteSong(@RequestParam Long songId, @ModelAttribute Action action) {
-        ModelAndView mav = new ModelAndView("list-songs");
-        Action action1 = new Action();
-        mav.addObject(action1);
+    public String deleteSong(@RequestParam Long songId) {
+        Action action = new Action(getTime());
+        Song song = songRepository.findById(songId).get();
+        action.setDescription("Удалена композиция " + "\""+ song.getSinger()+"\" - "
+                + "\"" + song.getTrackName() + "\"");
         actionRepository.save(action);
         songRepository.deleteById(songId);
         return "redirect:/list";
-    }
-
-    @PostMapping("/deleteSong?songId")
-    public String deleteSong(@ModelAttribute Action action){
-        actionRepository.save(action);
-        return "redirect:list";
     }
 
     private String getTime() {
