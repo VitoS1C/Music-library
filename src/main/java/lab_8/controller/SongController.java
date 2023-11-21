@@ -85,7 +85,11 @@ public class SongController {
     @GetMapping("/deleteSong")
     public String deleteSong(@RequestParam Long songId) {
         Action action = new Action(getTime());
-        Song song = songRepository.findById(songId).get();
+        Optional<Song> optionalSong = songRepository.findById(songId);
+        Song song = new Song();
+        if (optionalSong.isPresent()) {
+            song = optionalSong.get();
+        }
         action.setDescription("Удалена композиция " + "\""+ song.getSinger()+"\" - "
                 + "\"" + song.getTrackName() + "\"");
         actionRepository.save(action);
