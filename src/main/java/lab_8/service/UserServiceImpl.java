@@ -5,6 +5,7 @@ import lab_8.entity.Role;
 import lab_8.entity.User;
 import lab_8.repository.RoleRepository;
 import lab_8.repository.UserRepository;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class UserServiceImpl implements UserService{
 
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
-        Role role = roleRepository.findByName("ROLE_ADMIN");
+        Role role = roleRepository.findByName("ROLE_USER");
         if (role == null){
             role = checkRoleExist();
         }
@@ -65,7 +66,7 @@ public class UserServiceImpl implements UserService{
 
     private Role checkRoleExist(){
         Role role = new Role();
-        role.setName("ROLE_ADMIN");
+        role.setName("ROLE_USER");
         return roleRepository.save(role);
     }
 }
