@@ -1,7 +1,9 @@
 package lab_8.entity;
 
 import lombok.*;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Setter
 @Getter
@@ -23,4 +25,12 @@ public class Action {
     public Action(String dateActions) {
         this.dateActions = dateActions;
     }
+
+    /*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_actions",
+            joinColumns = {@JoinColumn(name = "user_id,", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "song_id", referencedColumnName = "id")}
+    )
+    private List<User> userActions;*/
 }

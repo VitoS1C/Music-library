@@ -23,11 +23,11 @@ public class WebSecurityConfig {
                 .antMatchers("/register/**").permitAll()
                 .antMatchers("/index").authenticated()
                 .antMatchers("/users").hasRole("ADMIN")
-                .antMatchers("/list").authenticated()
+                .antMatchers("/list").permitAll()
                 .antMatchers("/actionList").authenticated()
-                .antMatchers("/addSongForm").authenticated()
+                .antMatchers("/addSongForm").permitAll()
                 .antMatchers("/showUpdateForm").authenticated()
-                .antMatchers("/deleteSong").authenticated()
+//                .antMatchers("/deleteSong").authenticated()
                 .and()
                 .formLogin(
                         form -> form

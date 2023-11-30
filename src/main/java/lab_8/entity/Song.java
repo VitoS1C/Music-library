@@ -4,8 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.core.io.Resource;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.io.File;
+import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -19,16 +24,6 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "users_song",
-            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "song_id", referencedColumnName = "id")}
-    )
-
-    @Column(nullable = false)
-    private List<User> userSongs;
-
     @Column(nullable = false)
     private String singer;
 
@@ -38,7 +33,7 @@ public class Song {
     @Column(nullable = false)
     private String album;
 
-    @Column(nullable = false)
-    private String duration;
-
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id")
+    private MusicFile musicFile;
 }

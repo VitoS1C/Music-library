@@ -42,7 +42,7 @@
             <th>Singer</th>
             <th>Track name</th>
             <th>Album</th>
-            <th>Duration</th>
+            <th>Play</th>
         </tr>
         </thead>
         <tbody>
@@ -50,7 +50,8 @@
             <td id="singer" th:text="${song.singer}"/>
             <td id="trackName" th:text="${song.trackName}"/>
             <td th:text="${song.album}"/>
-            <td th:text="${song.duration}"/>
+            <td><audio controls th:src="${song.getMusicFile().getLink()}">
+            </audio></td>
             <td>
                 <a id="update" th:href="@{/showUpdateForm(songId=${song.id})}" class="btn btn-info">Update</a>
 
