@@ -35,7 +35,7 @@
     <hr/>
     <a th:href="@{/addSongForm}" class="btn btn-primary">Add Song</a>
     <br/><br/>
-    <table class="table table-bordered table-striped" id="studentTable">
+    <table class="table table-bordered table-striped" id="audioTable">
 
         <thead>
         <tr>
@@ -46,21 +46,23 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="song: ${songs}">
+        <tr th:each="song: ${songs}" >
             <td id="singer" th:text="${song.singer}"/>
             <td id="trackName" th:text="${song.trackName}"/>
             <td th:text="${song.album}"/>
-            <td><audio controls th:src="${song.getMusicFile().getLink()}">
-            </audio></td>
+            <td th:data-src="${song.getMusicFile().getLink()}"><button class="playButton">Play</button></td>
             <td>
                 <a id="update" th:href="@{/showUpdateForm(songId=${song.id})}" class="btn btn-info">Update</a>
 
-                <a id="delete" th:href="@{/deleteSong(songId=${song.id})}" class="btn btn-danger ml-2" >Delete</a>
+                <a id="delete" th:href="@{/deleteSong(songId=${song.id})}" class="btn btn-danger ml-2">Delete</a>
             <td/>
         </tr>
         </tbody>
     </table>
 </div>
+    <div style="width: 100%; border: red; height: 60px; position: absolute; bottom: 0">
+        <audio style="width: 90%; margin-left: 5%; margin-right: 5%; " id="audioPlayer" controls></audio>
+    </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
 <script>
@@ -73,5 +75,31 @@
         });
     })
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var audioPlayer = document.getElementById('audioPlayer');
+        var audioTable = document.getElementById('audioTable');
+
+        audioTable.addEventListener('click', function(e) {
+            // Проверяем, является ли целевой элемент кнопкой Play
+            if (e.target.classList.contains('playButton')) {
+                e.preventDefault();
+
+                // Получаем значение атрибута data-src из родительской строки tr
+                var audioSrc = e.target.closest('td').getAttribute('data-src');
+
+                if (audioSrc) {
+                    // Задаем аудиофайл для плеера и запускаем воспроизведение
+                    audioPlayer.src = audioSrc;
+                    audioPlayer.load();
+                    audioPlayer.play();
+                } else {
+                    console.error('Ошибка: Не удалось получить значение data-src.');
+                }
+            }
+        });
+    });
+</script>
+
 </body>
 </html>

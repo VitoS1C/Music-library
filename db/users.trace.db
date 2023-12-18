@@ -104,8 +104,8 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
 2023-03-27 20:55:20 database: flush
-org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]" [50000-214]
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.get(DbException.java:212)
 	at org.h2.message.DbException.convert(DbException.java:395)
 	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:125)
@@ -166,21 +166,21 @@ General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vi
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
-	at lab_8.Lab8Application.main(Lab8Application.java:10)
-Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]" [50000-214]
+	at URFU_Music.Lab8Application.main(Lab8Application.java:10)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 61 more
-Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]
 	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
 	at org.h2.mvstore.FileStore.open(FileStore.java:178)
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
 	... 55 more
 2023-03-27 20:55:40 database: flush
-org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]" [50000-214]
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.get(DbException.java:212)
 	at org.h2.message.DbException.convert(DbException.java:395)
 	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:125)
@@ -241,13 +241,13 @@ General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vi
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
-	at lab_8.Lab8Application.main(Lab8Application.java:10)
-Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]" [50000-214]
+	at URFU_Music.Lab8Application.main(Lab8Application.java:10)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 61 more
-Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]
 	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
 	at org.h2.mvstore.FileStore.open(FileStore.java:178)
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
@@ -336,7 +336,7 @@ insert into songs (id, album, duration, singer, track_name) values (default, ?, 
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
 	at jdk.proxy2/jdk.proxy2.$Proxy114.save(Unknown Source)
-	at lab_8.controller.SongController.saveSong(SongController.java:41)
+	at URFU_Music.controller.SongController.saveSong(SongController.java:41)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -519,7 +519,7 @@ insert into songs (id, album, duration, singer, track_name) values (default, ?, 
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
 	at jdk.proxy2/jdk.proxy2.$Proxy114.save(Unknown Source)
-	at lab_8.controller.SongController.saveSong(SongController.java:41)
+	at URFU_Music.controller.SongController.saveSong(SongController.java:41)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -620,8 +620,8 @@ Caused by: java.lang.NumberFormatException: For input string: "00:0"
 	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:86)
 	... 167 more
 2023-03-27 16:09:52 database: flush
-org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]" [50000-210]
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]" [50000-210]
 	at org.h2.message.DbException.get(DbException.java:216)
 	at org.h2.message.DbException.convert(DbException.java:414)
 	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:120)
@@ -656,19 +656,19 @@ General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vi
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
-Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]" [50000-210]
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]" [50000-210]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:573)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
 	... 34 more
-Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]
 	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
 	at org.h2.mvstore.FileStore.open(FileStore.java:163)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:444)
 	... 28 more
 2023-03-27 16:09:52 database: flush
-org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]" [50000-210]
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]" [50000-210]
 	at org.h2.message.DbException.get(DbException.java:216)
 	at org.h2.message.DbException.convert(DbException.java:414)
 	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:120)
@@ -703,12 +703,12 @@ General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vi
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
-Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]" [50000-210]
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]" [50000-210]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:573)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
 	... 34 more
-Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]
 	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
 	at org.h2.mvstore.FileStore.open(FileStore.java:163)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:444)
@@ -798,8 +798,8 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
 2023-03-27 21:10:41 database: flush
-org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]" [50000-214]
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.get(DbException.java:212)
 	at org.h2.message.DbException.convert(DbException.java:395)
 	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:125)
@@ -860,13 +860,13 @@ General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vi
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
-	at lab_8.Lab8Application.main(Lab8Application.java:10)
-Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]" [50000-214]
+	at URFU_Music.Lab8Application.main(Lab8Application.java:10)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 61 more
-Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]
 	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
 	at org.h2.mvstore.FileStore.open(FileStore.java:178)
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
@@ -936,8 +936,8 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
 2023-03-27 22:39:02 database: flush
-org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]" [50000-214]
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.get(DbException.java:212)
 	at org.h2.message.DbException.convert(DbException.java:395)
 	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:125)
@@ -998,13 +998,13 @@ General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vi
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
-	at lab_8.Lab8Application.main(Lab8Application.java:10)
-Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]" [50000-214]
+	at URFU_Music.Lab8Application.main(Lab8Application.java:10)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 61 more
-Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]
 	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
 	at org.h2.mvstore.FileStore.open(FileStore.java:178)
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
@@ -1059,7 +1059,7 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
-	at lab_8.Lab8Application.main(Lab8Application.java:10)
+	at URFU_Music.Lab8Application.main(Lab8Application.java:10)
 2023-03-28 00:25:20 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLDataException: Ошибка преобразования данных при конвертации "1679945119371 (ACTIONS: ""DATE_ACTIONS"" TIMESTAMP NOT NULL)"
 Data conversion error converting "1679945119371 (ACTIONS: ""DATE_ACTIONS"" TIMESTAMP NOT NULL)"; SQL statement:
@@ -1174,8 +1174,8 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
 2023-03-28 00:29:33 database: flush
-org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]" [50000-214]
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.get(DbException.java:212)
 	at org.h2.message.DbException.convert(DbException.java:395)
 	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:125)
@@ -1236,21 +1236,21 @@ General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vi
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
-	at lab_8.Lab8Application.main(Lab8Application.java:10)
-Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]" [50000-214]
+	at URFU_Music.Lab8Application.main(Lab8Application.java:10)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 61 more
-Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]
 	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
 	at org.h2.mvstore.FileStore.open(FileStore.java:178)
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
 	... 55 more
 2023-03-27 19:31:12 database: flush
-org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]" [50000-210]
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]" [50000-210]
 	at org.h2.message.DbException.get(DbException.java:216)
 	at org.h2.message.DbException.convert(DbException.java:414)
 	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:120)
@@ -1285,19 +1285,19 @@ General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vi
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
-Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]" [50000-210]
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]" [50000-210]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:573)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
 	... 34 more
-Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]
 	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
 	at org.h2.mvstore.FileStore.open(FileStore.java:163)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:444)
 	... 28 more
 2023-03-27 19:31:12 database: flush
-org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]" [50000-210]
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]" [50000-210]
 	at org.h2.message.DbException.get(DbException.java:216)
 	at org.h2.message.DbException.convert(DbException.java:414)
 	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:120)
@@ -1332,12 +1332,12 @@ General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vi
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
-Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]" [50000-210]
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]" [50000-210]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:573)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
 	... 34 more
-Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]
 	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
 	at org.h2.mvstore.FileStore.open(FileStore.java:163)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:444)
@@ -1427,8 +1427,8 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
 2023-03-28 01:00:23 database: flush
-org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]" [50000-214]
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.get(DbException.java:212)
 	at org.h2.message.DbException.convert(DbException.java:395)
 	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:125)
@@ -1489,21 +1489,21 @@ General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vi
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
-	at lab_8.Lab8Application.main(Lab8Application.java:10)
-Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]" [50000-214]
+	at URFU_Music.Lab8Application.main(Lab8Application.java:10)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 61 more
-Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]
 	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
 	at org.h2.mvstore.FileStore.open(FileStore.java:178)
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
 	... 55 more
 2023-03-27 20:00:52 database: flush
-org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]" [50000-210]
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]" [50000-210]
 	at org.h2.message.DbException.get(DbException.java:216)
 	at org.h2.message.DbException.convert(DbException.java:414)
 	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:120)
@@ -1538,19 +1538,19 @@ General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vi
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
-Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]" [50000-210]
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]" [50000-210]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:573)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
 	... 34 more
-Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]
 	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
 	at org.h2.mvstore.FileStore.open(FileStore.java:163)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:444)
 	... 28 more
 2023-03-27 20:00:52 database: flush
-org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]" [50000-210]
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]" [50000-210]
 	at org.h2.message.DbException.get(DbException.java:216)
 	at org.h2.message.DbException.convert(DbException.java:414)
 	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:120)
@@ -1585,12 +1585,12 @@ General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vi
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
-Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]" [50000-210]
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]" [50000-210]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:573)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:496)
 	... 34 more
-Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.210/7]
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.210/7]
 	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
 	at org.h2.mvstore.FileStore.open(FileStore.java:163)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:444)
@@ -1638,8 +1638,8 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
 2023-03-28 01:01:43 database: flush
-org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]" [50000-214]
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.get(DbException.java:212)
 	at org.h2.message.DbException.convert(DbException.java:395)
 	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:125)
@@ -1700,13 +1700,13 @@ General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vi
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
-	at lab_8.Lab8Application.main(Lab8Application.java:10)
-Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]" [50000-214]
+	at URFU_Music.Lab8Application.main(Lab8Application.java:10)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 61 more
-Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]
 	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
 	at org.h2.mvstore.FileStore.open(FileStore.java:178)
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
@@ -1774,7 +1774,7 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
 	at jdk.proxy2/jdk.proxy2.$Proxy106.findAll(Unknown Source)
-	at lab_8.controller.SongController.getAllActions(SongController.java:46)
+	at URFU_Music.controller.SongController.getAllActions(SongController.java:46)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -1928,7 +1928,7 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
 	at jdk.proxy2/jdk.proxy2.$Proxy114.findAll(Unknown Source)
-	at lab_8.controller.SongController.getAllSongs(SongController.java:38)
+	at URFU_Music.controller.SongController.getAllSongs(SongController.java:38)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -2050,7 +2050,7 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
 	at jdk.proxy2/jdk.proxy2.$Proxy106.findAll(Unknown Source)
-	at lab_8.controller.SongController.getAllActions(SongController.java:46)
+	at URFU_Music.controller.SongController.getAllActions(SongController.java:46)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -2172,7 +2172,7 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
 	at jdk.proxy2/jdk.proxy2.$Proxy114.findAll(Unknown Source)
-	at lab_8.controller.SongController.getAllSongs(SongController.java:38)
+	at URFU_Music.controller.SongController.getAllSongs(SongController.java:38)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -2295,7 +2295,7 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
 	at jdk.proxy2/jdk.proxy2.$Proxy114.findAll(Unknown Source)
-	at lab_8.controller.SongController.getAllSongs(SongController.java:38)
+	at URFU_Music.controller.SongController.getAllSongs(SongController.java:38)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -2418,7 +2418,7 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
 	at jdk.proxy2/jdk.proxy2.$Proxy106.findAll(Unknown Source)
-	at lab_8.controller.SongController.getAllActions(SongController.java:46)
+	at URFU_Music.controller.SongController.getAllActions(SongController.java:46)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -3244,8 +3244,8 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
 2023-03-28 01:37:11 database: flush
-org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]" [50000-214]
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.get(DbException.java:212)
 	at org.h2.message.DbException.convert(DbException.java:395)
 	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:125)
@@ -3306,13 +3306,13 @@ General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vi
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
-	at lab_8.Lab8Application.main(Lab8Application.java:10)
-Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]" [50000-214]
+	at URFU_Music.Lab8Application.main(Lab8Application.java:10)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 61 more
-Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]
 	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
 	at org.h2.mvstore.FileStore.open(FileStore.java:178)
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
@@ -3487,8 +3487,8 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
 2023-03-28 16:17:03 database: flush
-org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]" [50000-214]
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.get(DbException.java:212)
 	at org.h2.message.DbException.convert(DbException.java:395)
 	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:125)
@@ -3549,13 +3549,13 @@ General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vi
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
-	at lab_8.Lab8Application.main(Lab8Application.java:10)
-Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]"
-General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]" [50000-214]
+	at URFU_Music.Lab8Application.main(Lab8Application.java:10)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]" [50000-214]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 61 more
-Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/lab_8/db/users.mv.db [2.1.214/7]
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/vitos/Projects/JavaLabs/URFU_Music/db/users.mv.db [2.1.214/7]
 	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:1004)
 	at org.h2.mvstore.FileStore.open(FileStore.java:178)
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
