@@ -43,14 +43,17 @@
             <th>Track name</th>
             <th>Album</th>
             <th>Play</th>
+            <th>Management</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="song: ${songs}" >
+        <tr th:each="song: ${songs}">
             <td id="singer" th:text="${song.singer}"/>
             <td id="trackName" th:text="${song.trackName}"/>
             <td th:text="${song.album}"/>
-            <td th:data-src="${song.getMusicFile().getLink()}"><button class="playButton">Play</button></td>
+            <td th:data-src="${song.getMusicFile().getLink()}">
+                <button class="playButton">&#9658</button>
+            </td>
             <td>
                 <a id="update" th:href="@{/showUpdateForm(songId=${song.id})}" class="btn btn-info">Update</a>
 
@@ -60,9 +63,14 @@
         </tbody>
     </table>
 </div>
-    <div style="width: 100%; border: red; height: 60px; position: absolute; bottom: 0">
-        <audio style="width: 90%; margin-left: 5%; margin-right: 5%; " id="audioPlayer" controls></audio>
+<div style="width: 100%; border: red; height: 60px; position: sticky; bottom: 40px">
+    <div style="margin-left: 5%; text-align: center" >
+        <button id="prevButton" onclick="prevTrack()"><<</button>
+        <span th:text="${'NO'}" id="trackText"></span>
+        <button id="nextButton" onclick="nextTrack()">>></button>
     </div>
+    <audio autoplay style="width: 90%; margin-left: 5%; margin-right: 5%; " id="audioPlayer" controls></audio>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
 <script>
@@ -76,28 +84,72 @@
     })
 </script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var audioPlayer = document.getElementById('audioPlayer');
-        var audioTable = document.getElementById('audioTable');
+    document.addEventListener('DOMContentLoaded', function () {
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playButtons = document.querySelectorAll('.playButton');
+        let currentIndex = 0;
+        const nextButton = document.getElementById('nextButton');
+        const prevButton = document.getElementById('prevButton');
+        const trackText = document.getElementById('trackText');
 
-        audioTable.addEventListener('click', function(e) {
-            // Проверяем, является ли целевой элемент кнопкой Play
-            if (e.target.classList.contains('playButton')) {
-                e.preventDefault();
 
-                // Получаем значение атрибута data-src из родительской строки tr
-                var audioSrc = e.target.closest('td').getAttribute('data-src');
+        nextButton.addEventListener('click', nextTrack);
+        prevButton.addEventListener('click', prevTrack);
 
-                if (audioSrc) {
-                    // Задаем аудиофайл для плеера и запускаем воспроизведение
-                    audioPlayer.src = audioSrc;
-                    audioPlayer.load();
-                    audioPlayer.play();
-                } else {
-                    console.error('Ошибка: Не удалось получить значение data-src.');
+
+        // Устанавливаем обработчик события клика для всех кнопок Play
+        playButtons.forEach(function (button, index) {
+            button.addEventListener('click', function () {
+                currentIndex = index;
+                loadAudio(currentIndex);
+            });
+        });
+
+        // Устанавливаем обработчик события окончания воспроизведения
+        audioPlayer.addEventListener('ended', function () {
+            currentIndex = (currentIndex + 1) % playButtons.length;
+            loadAudio(currentIndex);
+        });
+
+        // Функция для загрузки аудиофайла
+        function loadAudio(index) {
+            var audioSrc = playButtons[index]?.parentNode?.getAttribute('data-src');
+            if (audioSrc) {
+                trackText.innerText = updateTrackInfo(index);
+                audioPlayer.src = audioSrc;
+                audioPlayer.load();
+                audioPlayer.play();
+            }
+        }
+
+        function nextTrack() {
+            currentIndex = (currentIndex + 1) % playButtons.length;
+            trackText.innerText = updateTrackInfo(currentIndex);
+            loadAudio(currentIndex);
+        }
+
+        function prevTrack() {
+            currentIndex = (currentIndex - 1 + playButtons.length) % playButtons.length;
+            trackText.innerText = updateTrackInfo(currentIndex);
+            loadAudio(currentIndex);
+        }
+
+        function updateTrackInfo(index) {
+            var table = document.getElementById('audioTable');
+            var rows = table.getElementsByTagName('tr');
+
+            if (index >= 0 && index < rows.length) {
+                var cells = rows[index + 1].getElementsByTagName('td');
+
+                if (cells.length >= 3) {
+                    var singer = cells[0].innerText;
+                    var trackName = cells[1].innerText;
+
+                    // Обновляем значение <span> с новой информацией о треке
+                    return singer + ' - ' + trackName;
                 }
             }
-        });
+        }
     });
 </script>
 
