@@ -25,11 +25,7 @@ public class Action {
         this.dateActions = dateActions;
     }
 
-    /*@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "users_actions",
-            joinColumns = {@JoinColumn(name = "user_id,", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "song_id", referencedColumnName = "id")}
-    )
-    private List<User> userActions;*/
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 }

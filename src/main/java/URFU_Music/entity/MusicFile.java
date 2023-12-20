@@ -18,9 +18,10 @@ public class MusicFile {
     @Column(nullable = false)
     public String filename;
 
-    @Column
+    @Transient
     public String link;
 
-    @OneToOne(mappedBy = "musicFile", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "musicFile", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "song_id", referencedColumnName = "id")
     private Song song ;
 }

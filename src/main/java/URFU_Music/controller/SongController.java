@@ -3,17 +3,15 @@ package URFU_Music.controller;
 import URFU_Music.entity.Action;
 import URFU_Music.entity.MusicFile;
 import URFU_Music.entity.Song;
-import URFU_Music.repository.ActionRepository;
+import URFU_Music.entity.User;
 import URFU_Music.repository.MusicFileRepository;
-import URFU_Music.repository.SongRepository;
-import URFU_Music.service.StorageService;
+import URFU_Music.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,30 +22,42 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Controller
 public class SongController {
 
-    private final SongRepository songRepository;
-    private final ActionRepository actionRepository;
+    private final ActionService actionService;
     private final StorageService storageService;
-    private final MusicFileRepository musicFileRepository;
+    private final MusicFileService musicFileService;
+    private final UserServiceImpl userService;
+    private final SongService songService;
+
     @Autowired
-    public SongController(SongRepository songRepository, ActionRepository actionRepository, StorageService storageService,
-                          MusicFileRepository musicFileRepository) {
-        this.songRepository = songRepository;
-        this.actionRepository = actionRepository;
+    public SongController(ActionService actionService, StorageService storageService,
+                          MusicFileService musicFileService, UserServiceImpl userService, SongService songService) {
+        this.actionService = actionService;
         this.storageService = storageService;
-        this.musicFileRepository = musicFileRepository;
+        this.musicFileService = musicFileService;
+        this.userService = userService;
+        this.songService = songService;
     }
 
     @GetMapping("/list")
-    @Transactional
     public ModelAndView getAllSongs() {
         log.info("/list -> connection");
         ModelAndView mav = new ModelAndView("list-songs");
-        List<Song> songs = songRepository.findAll();
+        User currentUser = userService.findCurrentUser();
+        Path path;
+        List<Song> songs = songService.getAll().stream()
+                .filter(song -> song.getUser().getId().equals(currentUser.getId())).collect(Collectors.toList());
+
+        for (Song song : songs) {
+            path = storageService.load(song.getMusicFile().getFilename());
+            song.getMusicFile().setLink(MvcUriComponentsBuilder.fromMethodName(SongController.class,
+                    "serveFile", path.getFileName().toString()).build().toUri().toString());
+        }
         mav.addObject("songs", songs);
         return mav;
     }
@@ -55,40 +65,40 @@ public class SongController {
     @GetMapping("/actionList")
     public ModelAndView getAllActions() {
         log.info("/actionList-> connection");
+        User currentUser = userService.findCurrentUser();
         ModelAndView mav = new ModelAndView("list-actions");
-        mav.addObject("actions", actionRepository.findAll());
+        mav.addObject("actions", actionService.getAll().stream().filter(action -> action
+                .getUser().getId().equals(currentUser.getId())).collect(Collectors.toList()));
         return mav;
     }
 
     @PostMapping("/showUpdateForm?{songId}")
     public String updateSong(@ModelAttribute Action action, @PathVariable Long songId) {
-        Optional<Song> songOptional = songRepository.findById(songId);
+        Optional<Song> songOptional = songService.findById(songId);
         Song song = null;
         if (songOptional.isPresent()){
             song = songOptional.get();
         }
-        songRepository.save(song);
-        actionRepository.save(action);
+        songService.save(song);
+        actionService.save(action);
         return "redirect:/list";
     }
 
     @PostMapping("/saveSong")
     public String saveSong(@RequestParam("file") MultipartFile file, @ModelAttribute Song song,
                            @ModelAttribute Action action) {
-        Path path;
+        User currentUser = userService.findCurrentUser();
         MusicFile musicFile = new MusicFile();
         musicFile.setFilename(storageService.store(file));
-
         song.setMusicFile(musicFile);
+        song.setUser(currentUser);
+        action.setUser(currentUser);
         musicFile.setSong(song);
-        path = storageService.load(song.getMusicFile().getFilename());
-        song.getMusicFile().setLink(MvcUriComponentsBuilder.fromMethodName(SongController.class,
-                "serveFile", path.getFileName().toString()).build().toUri().toString());//.
-        //replaceAll("http://192.168.1.2","http://demo.komputer.keenetic.link"));
         action.setDateActions(getTime());
-        musicFileRepository.save(musicFile);
-        songRepository.save(song);
-        actionRepository.save(action);
+        musicFileService.save(musicFile);
+        userService.update(currentUser);
+        songService.save(song);
+        actionService.save(action);
         return "redirect:/list";
     }
 
@@ -106,7 +116,7 @@ public class SongController {
     public ModelAndView showUpdateForm(@RequestParam Long songId) {
         log.info("show form connect");
         ModelAndView mav = new ModelAndView("add-song-form-for-update");
-        Optional<Song> optionalSong = songRepository.findById(songId);
+        Optional<Song> optionalSong = songService.findById(songId);
         Song song = new Song();
         Action action = new Action();
         if (optionalSong.isPresent()) {
@@ -120,25 +130,30 @@ public class SongController {
     @PostMapping("/updateSong")
     public String  updateSong(@ModelAttribute Song song) {
         Action action = new Action(getTime());
+        User currentUser = userService.findCurrentUser();
         action.setDescription("Изменена композиция " + "\"" + song.getSinger() + "\" - " + song.getTrackName());
-        songRepository.save(song);
-        actionRepository.save(action);
+        action.setUser(currentUser);
+        song.setUser(currentUser);
+        songService.save(song);
+        actionService.save(action);
         return "redirect:/list";
     }
 
     @GetMapping("/deleteSong")
     public String deleteSong(@RequestParam Long songId) {
+        User currentUser = userService.findCurrentUser();
         Action action = new Action(getTime());
-        Optional<Song> optionalSong = songRepository.findById(songId);
+        action.setUser(currentUser);
+        Optional<Song> optionalSong = songService.findById(songId);
         Song song = new Song();
         if (optionalSong.isPresent()) {
             song = optionalSong.get();
         }
         action.setDescription("Удалена композиция " + "\"" + song.getSinger() + "\" - "
                 + "\"" + song.getTrackName() + "\"");
-        actionRepository.save(action);
+        actionService.save(action);
         storageService.deleteFile(song.getMusicFile().filename);
-        songRepository.deleteById(songId);
+        songService.deleteById(songId);
         return "redirect:/list";
     }
 

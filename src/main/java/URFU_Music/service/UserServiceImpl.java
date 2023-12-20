@@ -6,9 +6,13 @@ import URFU_Music.entity.User;
 import URFU_Music.repository.RoleRepository;
 import URFU_Music.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,8 +23,10 @@ public class UserServiceImpl implements UserService{
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
+
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
+                           PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
@@ -51,6 +57,22 @@ public class UserServiceImpl implements UserService{
         return users.stream()
                 .map(this::mapToUserDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public User findCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
+            return userRepository.findByEmail(authentication.getName());
+        }
+        return null;
+    }
+
+    @Override
+    @Transactional
+    public void update(User user) {
+        User updated = user;
+        updated.setSongs(user.getSongs());
     }
 
     private UserDto mapToUserDto(User user){
