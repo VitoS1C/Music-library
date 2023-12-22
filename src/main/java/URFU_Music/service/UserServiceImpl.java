@@ -68,13 +68,6 @@ public class UserServiceImpl implements UserService{
         return null;
     }
 
-    @Override
-    @Transactional
-    public void update(User user) {
-        User updated = user;
-        updated.setSongs(user.getSongs());
-    }
-
     private UserDto mapToUserDto(User user){
         UserDto userDto = new UserDto();
         String[] str = user.getName().split(" ");

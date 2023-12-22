@@ -4,7 +4,6 @@ import URFU_Music.entity.Action;
 import URFU_Music.entity.MusicFile;
 import URFU_Music.entity.Song;
 import URFU_Music.entity.User;
-import URFU_Music.repository.MusicFileRepository;
 import URFU_Music.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,7 +95,6 @@ public class SongController {
         musicFile.setSong(song);
         action.setDateActions(getTime());
         musicFileService.save(musicFile);
-        userService.update(currentUser);
         songService.save(song);
         actionService.save(action);
         return "redirect:/list";

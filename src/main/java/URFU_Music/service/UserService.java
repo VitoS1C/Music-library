@@ -11,5 +11,4 @@ public interface UserService{
     List<UserDto> findAllUsers();
     User findCurrentUser();
 
-    void update(User user);
 }

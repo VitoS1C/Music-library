@@ -14,10 +14,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class WebSecurityConfig {
 
     @Bean
-    public static PasswordEncoder passwordEncoder(){return new BCryptPasswordEncoder();}
+    public static PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/register/**").permitAll()
@@ -27,7 +29,7 @@ public class WebSecurityConfig {
                 .antMatchers("/actionList").authenticated()
                 .antMatchers("/addSongForm").authenticated()
                 .antMatchers("/showUpdateForm").authenticated()
-//                .antMatchers("/deleteSong").authenticated()
+                .antMatchers("/deleteSong").authenticated()
                 .and()
                 .formLogin(
                         form -> form

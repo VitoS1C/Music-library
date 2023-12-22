@@ -7,10 +7,10 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 @SpringBootApplication
 @EnableConfigurationProperties(StorageProperties.class)
-public class Lab8Application {
+public class Main {
 
     public static void main(String[] args) {
-        SpringApplication.run(Lab8Application.class, args);
+        SpringApplication.run(Main.class, args);
     }
 
 }
