@@ -48,15 +48,13 @@ public class SongController {
         log.info("/list -> connection");
         ModelAndView mav = new ModelAndView("list-songs");
         User currentUser = userService.findCurrentUser();
-        Path path;
         List<Song> songs = songService.getAll().stream()
-                .filter(song -> song.getUser().getId().equals(currentUser.getId())).collect(Collectors.toList());
-
-        for (Song song : songs) {
-            path = storageService.load(song.getMusicFile().getFilename());
-            song.getMusicFile().setLink(MvcUriComponentsBuilder.fromMethodName(SongController.class,
-                    "serveFile", path.getFileName().toString()).build().toUri().toString());
-        }
+                .filter(song -> song.getUser().getId().equals(currentUser.getId()))
+                .peek(song -> song.getMusicFile().setLink(MvcUriComponentsBuilder.fromMethodName(SongController.class,
+                                "serveFile", storageService.load(song.getMusicFile().getFilename())
+                                        .getFileName().toString())
+                        .build().toUri().toString()))
+                .collect(Collectors.toList());
         mav.addObject("songs", songs);
         return mav;
     }
@@ -75,7 +73,7 @@ public class SongController {
     public String updateSong(@ModelAttribute Action action, @PathVariable Long songId) {
         Optional<Song> songOptional = songService.findById(songId);
         Song song = null;
-        if (songOptional.isPresent()){
+        if (songOptional.isPresent()) {
             song = songOptional.get();
         }
         songService.save(song);
@@ -126,7 +124,7 @@ public class SongController {
     }
 
     @PostMapping("/updateSong")
-    public String  updateSong(@ModelAttribute Song song) {
+    public String updateSong(@ModelAttribute Song song) {
         Action action = new Action(getTime());
         User currentUser = userService.findCurrentUser();
         action.setDescription("Изменена композиция " + "\"" + song.getSinger() + "\" - " + song.getTrackName());

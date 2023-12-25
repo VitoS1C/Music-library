@@ -22,14 +22,9 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/register/**").permitAll()
-                .antMatchers("/index").permitAll()
-                .antMatchers("/users").hasRole("ADMIN")
-                .antMatchers("/list").authenticated()
-                .antMatchers("/actionList").authenticated()
-                .antMatchers("/addSongForm").authenticated()
-                .antMatchers("/showUpdateForm").authenticated()
-                .antMatchers("/deleteSong").authenticated()
+                .antMatchers("/register/**","/index").permitAll()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .anyRequest().hasAnyRole("USER", "ADMIN")
                 .and()
                 .formLogin(
                         form -> form
@@ -40,6 +35,7 @@ public class WebSecurityConfig {
                 ).logout(
                         logout -> logout
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                                .logoutSuccessUrl("/login")
                                 .permitAll()
                 );
         return http.build();
