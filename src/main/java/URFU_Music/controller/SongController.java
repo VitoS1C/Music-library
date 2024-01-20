@@ -35,13 +35,13 @@ public class SongController {
     @PatchMapping()
     public String removeFromList(@RequestParam long id) {
         songService.removeFromList(id);
-        return "redirect:/songs";
+        return "redirect:/";
     }
 
     @PostMapping()
     public String addToList(@RequestParam long id) {
         songService.addToList(id);
-        return "redirect:/songs";
+        return "redirect:/";
     }
 
 //    @GetMapping("/actionList")

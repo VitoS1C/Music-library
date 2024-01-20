@@ -10,5 +10,5 @@ public interface ActionService {
     List<Action> getAll();
 
     @Transactional
-    void save(Action action, Song song);
+    void save(Song song);
 }

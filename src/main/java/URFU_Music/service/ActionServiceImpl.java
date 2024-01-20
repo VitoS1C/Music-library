@@ -29,7 +29,8 @@ public class ActionServiceImpl implements ActionService{
 
     @Transactional
     @Override
-    public void save(Action action, Song song) {
+    public void save(Song song) {
+        Action action = new Action();
         action.setDescription("Добавлена новая композиция: " + song.getSinger() + " - " + song.getTrackName());
         action.setUser(userService.findCurrentUser());
         actionRepository.save(action);
