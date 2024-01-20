@@ -16,19 +16,12 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/songs")
 public class SongController {
 
-    private final ActionService actionService;
     private final StorageService storageService;
-    private final MusicFileService musicFileService;
-    private final UserService userService;
     private final SongService songService;
 
     @Autowired
-    public SongController(ActionService actionService, StorageService storageService,
-                          MusicFileService musicFileService, UserService userService, SongService songService) {
-        this.actionService = actionService;
+    public SongController(StorageService storageService, SongService songService) {
         this.storageService = storageService;
-        this.musicFileService = musicFileService;
-        this.userService = userService;
         this.songService = songService;
     }
 
