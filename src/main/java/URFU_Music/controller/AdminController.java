@@ -49,21 +49,14 @@ public class AdminController {
     public ModelAndView getAddSongsForm() {
         ModelAndView mav = new ModelAndView("admin/add_song");
         Song song = new Song();
-        Action action = new Action();
         mav.addObject(song);
-        mav.addObject(action);
         return mav;
     }
 
     @PostMapping("/save")
-    public String saveSong(@RequestParam("file") MultipartFile file, @ModelAttribute Song song,
-                           @ModelAttribute Action action) {
-        MusicFile musicFile = new MusicFile();
-        musicFile.setFilename(file.getOriginalFilename());
-        song.setMusicFile(musicFile);
-        songService.save(song);
-        musicFileService.save(musicFile);
-        actionService.save(action, song);
+    public String saveSong(@RequestParam("file") MultipartFile file, @ModelAttribute Song song) {
+        songService.save(song, file);
+        actionService.save(song);
         storageService.store(file);
         return "redirect:/";
     }

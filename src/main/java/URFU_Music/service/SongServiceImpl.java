@@ -2,6 +2,7 @@ package URFU_Music.service;
 
 import URFU_Music.controller.SongController;
 import URFU_Music.dto.SongsResponse;
+import URFU_Music.entity.MusicFile;
 import URFU_Music.entity.Song;
 import URFU_Music.entity.User;
 import URFU_Music.repository.SongRepository;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import java.util.List;
@@ -57,8 +59,11 @@ public class SongServiceImpl implements SongService {
 
     @Override
     @Transactional
-    public void save(Song song) {
+    public void save(Song song, MultipartFile file) {
+        MusicFile musicFile = new MusicFile();
+        musicFile.setFilename(file.getOriginalFilename());
         songRepository.save(song);
+        song.setMusicFile(musicFile);
     }
 
     @Override
