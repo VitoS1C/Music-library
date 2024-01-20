@@ -1,5 +1,6 @@
 package URFU_Music.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,10 +37,15 @@ public class User {
     )
     private List<Role> roles = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<Song> songs = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_songs",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "song_id", referencedColumnName = "id")}
+    )
+    private List<Song> songs;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<Action> actions = new ArrayList<>();
+    private List<Action> actions;
 
 }

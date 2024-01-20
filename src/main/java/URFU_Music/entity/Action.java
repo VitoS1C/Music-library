@@ -3,10 +3,11 @@ package URFU_Music.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Setter
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "actions")
@@ -16,16 +17,28 @@ public class Action {
     private Long id;
 
     @Column(nullable = false)
-    private String dateActions;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateActions;
 
     @Column(nullable = false)
     private String description;
 
-    public Action(String dateActions) {
-        this.dateActions = dateActions;
-    }
-
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
+
+    @Transient
+    private String dateTime;
+
+    public Action() {
+        dateActions = new Date();
+        setDateTime();
+    }
+
+    public void setDateTime() {
+        SimpleDateFormat formatter = new SimpleDateFormat();
+        formatter.applyPattern("dd-MM-yyyy HH:mm");
+        this.dateTime = formatter.format(dateActions);
+    }
+
 }

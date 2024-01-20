@@ -3,6 +3,7 @@ package URFU_Music.controller;
 import URFU_Music.dto.UserDto;
 import URFU_Music.entity.User;
 import URFU_Music.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class SecurityController {
@@ -19,26 +19,21 @@ public class SecurityController {
     private final UserService userService;
 
 
+    @Autowired
     public SecurityController(UserService userService) {
         this.userService = userService;
     }
 
-
-    @GetMapping("/index")
-    public String home() {
-        return "index";
-    }
-
     @GetMapping("/login")
-    public String login() {
-        return "login";
+    public String login(Model model) {
+        return "user/login";
     }
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         UserDto user = new UserDto();
         model.addAttribute("user", user);
-        return "register";
+        return "user/register";
     }
 
     @PostMapping("/register/save")
@@ -54,17 +49,10 @@ public class SecurityController {
 
         if (result.hasErrors()) {
             model.addAttribute("user", userDto);
-            return "/register";
+            return "user/register";
         }
 
         userService.saveUser(userDto);
         return "redirect:/register?success";
-    }
-
-    @GetMapping("/users")
-    public String users(Model model) {
-        List<UserDto> users = userService.findAllUsers();
-        model.addAttribute("users", users);
-        return "users";
     }
 }

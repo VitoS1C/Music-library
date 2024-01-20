@@ -8,7 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.UUID;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 import URFU_Music.config.StorageProperties;
@@ -22,12 +22,12 @@ import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
-public class FileSystemStorageService implements StorageService {
+public class StorageServiceImpl implements StorageService {
 
     private final Path rootLocation;
 
     @Autowired
-    public FileSystemStorageService(StorageProperties properties) {
+    public StorageServiceImpl(StorageProperties properties) {
 
         if(properties.getLocation().trim().isEmpty()){
             throw new StorageException("File upload location can not be Empty.");
@@ -37,8 +37,7 @@ public class FileSystemStorageService implements StorageService {
     }
 
     @Override
-    public String store(MultipartFile file) {
-        String uniqueFileName;
+    public void store(MultipartFile file) {
         Path destinationFile;
 
         try {
@@ -46,12 +45,10 @@ public class FileSystemStorageService implements StorageService {
                 throw new StorageException("Failed to store empty file.");
             }
 
-            uniqueFileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
             destinationFile = this.rootLocation.resolve(
-                            Paths.get(uniqueFileName))
+                            Paths.get(Objects.requireNonNull(file.getOriginalFilename())))
                     .normalize().toAbsolutePath();
             if (!destinationFile.getParent().equals(this.rootLocation.toAbsolutePath())) {
-                // This is a security check
                 throw new StorageException(
                         "Cannot store file outside current directory.");
             }
@@ -63,8 +60,6 @@ public class FileSystemStorageService implements StorageService {
         catch (IOException e) {
             throw new StorageException("Failed to store file.", e);
         }
-
-        return uniqueFileName;
     }
 
     @Override

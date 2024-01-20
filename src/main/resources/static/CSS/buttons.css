@@ -1,0 +1,27 @@
+.playButton {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.switchButton {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.track-progress {
+    width: 80%;
+}
+
+.player {
+    width: 100%;
+}
+
+.spacer {
+    height: 100px;
+}
+
