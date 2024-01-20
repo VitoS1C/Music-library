@@ -39,11 +39,11 @@
                 </td>
                 <td th:if="${#authentication.principal ne 'anonymousUser'}">
                     <form th:unless="${userSongs.contains(song)}" th:method="POST" th:action="@{/songs(id=${song.id})}">
-                        <input type="submit" value="&#10084">
+                        <input type="submit" value="&#128420;">
                     </form>
                     <form th:unless="${!userSongs.contains(song)}" th:method="PATCH"
                           th:action="@{/songs(id=${song.id})}">
-                        <input type="submit" value="&#128420;">
+                        <input type="submit" value="&#10084">
                     </form>
                 </td>
             </tr>
