@@ -28,7 +28,6 @@ public class Song {
     @Column(nullable = false)
     private String album;
 
-    //musicFile.setSong(this);
     @Setter
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "id")

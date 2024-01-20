@@ -1,8 +1,6 @@
 package URFU_Music.controller;
 
 import URFU_Music.dto.UserDto;
-import URFU_Music.entity.Action;
-import URFU_Music.entity.MusicFile;
 import URFU_Music.entity.Song;
 import URFU_Music.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +18,14 @@ public class AdminController {
     private final UserService userService;
     private final StorageService storageService;
     private final ActionService actionService;
-    private final MusicFileService musicFileService;
     private final SongService songService;
 
     @Autowired
     public AdminController(UserService userService, StorageService storageService, ActionService actionService,
-                           MusicFileService musicFileService, SongService songService) {
+                           SongService songService) {
         this.userService = userService;
         this.storageService = storageService;
         this.actionService = actionService;
-        this.musicFileService = musicFileService;
         this.songService = songService;
     }
 
