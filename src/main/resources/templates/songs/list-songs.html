@@ -35,7 +35,7 @@
                 <button style="" class="playButton">&#9199;</button>
             </td>
             <td>
-                <form th:method="PATCH" th:action="@{/songs/(id=${song.id})}">
+                <form th:method="DELETE" th:action="@{/songs/list(id=${song.id})}">
                     <input type="submit" value="&#128465;" class="btn-danger">
                 </form>
             </td>

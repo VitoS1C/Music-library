@@ -4,6 +4,7 @@ import URFU_Music.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.data.jpa.domain.JpaSort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -32,10 +33,13 @@ public class SongController {
         mav.addObject("songs", songService.getUsersSongs());
         return mav;
     }
-    @PatchMapping()
-    public String removeFromList(@RequestParam long id) {
+    @DeleteMapping("/{referer}")
+    public String removeFromList(@RequestParam long id, @PathVariable String referer) {
         songService.removeFromList(id);
-        return "redirect:/";
+        if ("index".equals(referer))
+            return "redirect:/";
+        else
+            return "redirect:/songs";
     }
 
     @PostMapping()
