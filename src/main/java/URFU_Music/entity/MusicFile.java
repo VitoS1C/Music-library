@@ -11,7 +11,7 @@ import lombok.*;
 @Table(name = "MUSIC_FILES")
 public class MusicFile {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
     @Column(nullable = false)
@@ -21,6 +21,5 @@ public class MusicFile {
     public String link;
 
     @OneToOne(mappedBy = "musicFile", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "song_id", referencedColumnName = "id")
     private Song song ;
 }
