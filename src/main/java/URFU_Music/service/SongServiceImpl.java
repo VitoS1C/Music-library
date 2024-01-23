@@ -62,8 +62,8 @@ public class SongServiceImpl implements SongService {
     public void save(Song song, MultipartFile file) {
         MusicFile musicFile = new MusicFile();
         musicFile.setFilename(file.getOriginalFilename());
-        songRepository.save(song);
         song.setMusicFile(musicFile);
+        songRepository.save(song);
     }
 
     @Override
