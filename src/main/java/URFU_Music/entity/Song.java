@@ -29,14 +29,14 @@ public class Song {
     private String album;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "music_file_id")
     private MusicFile musicFile;
 
     @ManyToMany(mappedBy = "songs", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<User> users;
 
     public void setMusicFile(MusicFile musicFile) {
-        this.musicFile = musicFile;
         musicFile.setSong(this);
+        this.musicFile = musicFile;
     }
 }
