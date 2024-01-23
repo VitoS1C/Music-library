@@ -1,8 +1,7 @@
 package URFU_Music.entity;
 
+import jakarta.persistence.*;
 import lombok.*;
-
-import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
