@@ -38,7 +38,7 @@
                     <button class="playButton">&#9199;</button>
                 </td>
                 <td th:if="${#authentication.principal ne 'anonymousUser'}">
-                    <form th:unless="${userSongs.contains(song)}" th:method="POST" th:action="@{/songs/(id=${song.id})}">
+                    <form th:unless="${userSongs.contains(song)}" th:method="POST" th:action="@{/songs(id=${song.id})}">
                         <input type="submit" value="&#128420;">
                     </form>
                     <form th:unless="${!userSongs.contains(song)}" th:method="DELETE"
@@ -64,8 +64,7 @@
         <li class="page-item" th:each="pageNum : ${#numbers.sequence(1, songs.pages)}">
             <a class="page-link"
                th:href="@{/(page=${pageNum - 1})}"
-               th:class="${pageNum == currentPage} ? 'active' : ''">
-                [[${pageNum}]]
+               th:class="${pageNum == currentPage} ? 'active' : ''" th:text="${pageNum + ','}">
             </a>
         </li>
 
