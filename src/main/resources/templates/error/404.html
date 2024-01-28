@@ -8,7 +8,7 @@
           crossorigin="anonymous">
 </head>
 <body>
-<div th:replace="fragments/header :: navigation(isAnonimus=${#authentication.getPrincipal() eq 'anonymousUser'})" ></div>
+<div th:replace="~{fragments/header :: navigation(isAnonimus=${#authentication.getPrincipal() eq 'anonymousUser'})}" ></div>
 <div style="width: 100%; text-align: center">
     <div style="margin-top: 15%; font-size: 150px"><b>Страница не найдена!</b></div>
 </div>

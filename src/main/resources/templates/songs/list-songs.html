@@ -11,7 +11,7 @@
 </head>
 <link rel="stylesheet" th:href="@{/CSS/buttons.css}">
 <body>
-<div th:replace="fragments/header :: navigation(isAnonimus=${#authentication.getPrincipal() eq 'anonymousUser'})"></div>
+<div th:replace="~{fragments/header :: navigation(isAnonimus=${#authentication.getPrincipal() eq 'anonymousUser'})}"></div>
 <div style="text-align: center" class="" th:if="${songs.isEmpty()}">
     <h2>Список пуст!</h2>
 </div>

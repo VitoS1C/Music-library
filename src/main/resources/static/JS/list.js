@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (cells.length >= 3) {
                 // Обновляем значение <span> с новой информацией о треке
-                return cells[0].innerText + '-' + cells[1].innerText;
+                return cells[0].innerText + ' - ' + cells[1].innerText;
             }
         }
     }

@@ -10,7 +10,7 @@
     <link href="/CSS/buttons.css" rel="stylesheet">
 </head>
 <body>
-<div th:replace="fragments/header :: navigation(isAnonimus=${#authentication.getPrincipal() eq 'anonymousUser'})"></div>
+<div th:replace="~{fragments/header :: navigation(isAnonimus=${#authentication.getPrincipal() eq 'anonymousUser'})}"></div>
 <div class="container">
     <form th:method="GET" th:action="@{/search}">
         <br/>

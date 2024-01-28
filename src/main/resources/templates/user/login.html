@@ -9,7 +9,7 @@
           crossorigin="anonymous">
 </head>
 <body>
-<div th:replace="fragments/header :: navigation(isAnonimus=${#authentication.getPrincipal() eq 'anonymousUser'})"></div>
+<div th:replace="~{fragments/header :: navigation(isAnonimus=${#authentication.getPrincipal() eq 'anonymousUser'})}"></div>
 <br/><br/>
 <div class="container">
     <div class="row">
