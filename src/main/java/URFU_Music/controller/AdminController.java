@@ -3,9 +3,11 @@ package URFU_Music.controller;
 import URFU_Music.dto.UserDto;
 import URFU_Music.entity.Song;
 import URFU_Music.service.*;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -50,7 +52,16 @@ public class AdminController {
     }
 
     @PostMapping("/save")
-    public String saveSong(@RequestParam("file") MultipartFile file, @ModelAttribute Song song) {
+    public String saveSong(@RequestParam("file") MultipartFile file, @Valid @ModelAttribute Song song,
+                           BindingResult bindingResult, Model model) {
+        song.setFile(file);
+        if (file.isEmpty())
+            bindingResult.rejectValue("file", "file.empty", "Вы не выбрали файл!");
+
+        if (bindingResult.hasErrors()) {
+            return "admin/add_song";
+        }
+
         songService.save(song, file);
         actionService.save(song);
         storageService.store(file);
