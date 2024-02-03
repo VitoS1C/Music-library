@@ -44,8 +44,4 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "song_id", referencedColumnName = "id")}
     )
     private List<Song> songs;
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<Action> actions;
-
 }

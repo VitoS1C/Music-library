@@ -19,15 +19,12 @@ import java.util.List;
 public class AdminController {
     private final UserService userService;
     private final StorageService storageService;
-    private final ActionService actionService;
     private final SongService songService;
 
     @Autowired
-    public AdminController(UserService userService, StorageService storageService, ActionService actionService,
-                           SongService songService) {
+    public AdminController(UserService userService, StorageService storageService, SongService songService) {
         this.userService = userService;
         this.storageService = storageService;
-        this.actionService = actionService;
         this.songService = songService;
     }
 
@@ -63,7 +60,6 @@ public class AdminController {
         }
 
         songService.save(song, file);
-        actionService.save(song);
         storageService.store(file);
         return "redirect:/";
     }

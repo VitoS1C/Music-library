@@ -29,9 +29,6 @@
                         <a class="nav-link active" aria-current="page" th:href="@{/admin/add}">Добавить музыку</a>
                     </li>
                     <li th:if="${!isAnonimus}" class="nav-item">
-                        <a class="nav-link active" aria-current="page" th:href="@{/actionList}">Мои действия</a>
-                    </li>
-                    <li th:if="${!isAnonimus}" class="nav-item">
                         <a class="nav-link active" aria-current="page" th:href="@{/logout}">Выйти</a>
                     </li>
                 </ul>
