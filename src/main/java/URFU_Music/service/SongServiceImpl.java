@@ -32,15 +32,21 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
-    public SongsResponse getAll(Integer page, Integer songsPerPage) {
+    public SongsResponse getAll(Integer page, Integer songsPerPage, boolean withLinks) {
         SongsResponse songsResponse = new SongsResponse();
-        songsResponse.setSongs(songRepository.findAll(PageRequest.of(page, songsPerPage)).getContent().stream().peek(
-                song -> song.getMusicFile()
-                        .setLink(MvcUriComponentsBuilder.fromMethodName(SongController.class,
-                                        "serveFile", storageService.load(song.getMusicFile().getFilename())
-                                                .getFileName().toString())
-                                .build().toUri().toString())).collect(Collectors.toList())
-        );
+
+        if (withLinks) {
+            songsResponse.setSongs(songRepository.findAll(PageRequest.of(page, songsPerPage)).getContent().stream().peek(
+                    song -> song.getMusicFile()
+                            .setLink(MvcUriComponentsBuilder.fromMethodName(SongController.class,
+                                            "serveFile", storageService.load(song.getMusicFile().getFilename())
+                                                    .getFileName().toString())
+                                    .build().toUri().toString())).collect(Collectors.toList())
+            );
+        } else {
+            songsResponse.setSongs(songRepository.findAll(PageRequest.of(page, songsPerPage)).getContent());
+        }
+
         songsResponse.setPages(songRepository.findAll(PageRequest.of(page, songsPerPage)).getTotalPages());
         songsResponse.setElements(songRepository.findAll(PageRequest.of(page, songsPerPage)).getNumberOfElements());
         return songsResponse;
@@ -102,5 +108,12 @@ public class SongServiceImpl implements SongService {
                         .build().toUri().toString())).collect(Collectors.toList());
 
         return new SongsResponse(songs, 1, songs.size());
+    }
+
+    @Override
+    @Transactional
+    public void update(Song song) {
+        songRepository.findById(song.getId()).ifPresent(existingSong -> song.setMusicFile(existingSong.getMusicFile()));
+        songRepository.save(song);
     }
 }

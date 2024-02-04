@@ -28,6 +28,9 @@
                     <li th:if="${#authorization.getAuthentication().getAuthorities()[0].authority eq 'ROLE_ADMIN'}">
                         <a class="nav-link active" aria-current="page" th:href="@{/admin/add}">Добавить музыку</a>
                     </li>
+                    <li th:if="${#authorization.getAuthentication().getAuthorities()[0].authority eq 'ROLE_ADMIN'}">
+                        <a class="nav-link active" aria-current="page" th:href="@{/admin/update-list}">Редактирование</a>
+                    </li>
                     <li th:if="${!isAnonimus}" class="nav-item">
                         <a class="nav-link active" aria-current="page" th:href="@{/logout}">Выйти</a>
                     </li>

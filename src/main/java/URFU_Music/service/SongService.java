@@ -25,7 +25,9 @@ public interface SongService {
     @Transactional
     void addToList(long id);
 
-    SongsResponse getAll(Integer page, Integer songsPerPage);
+    SongsResponse getAll(Integer page, Integer songsPerPage, boolean withLinks);
 
     SongsResponse findTrack(String name);
+
+    void update(Song song);
 }

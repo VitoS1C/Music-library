@@ -63,4 +63,27 @@ public class AdminController {
         storageService.store(file);
         return "redirect:/";
     }
+
+    @GetMapping("/update-list")
+    public ModelAndView showUpdateList(@RequestParam(required = false, defaultValue = "0") Integer page,
+                                       @RequestParam(required = false, defaultValue = "20") Integer songsPerPage) {
+        ModelAndView mav = new ModelAndView("admin/update_list");
+        mav.addObject("currentPage", page);
+        mav.addObject("songs", songService.getAll(page, songsPerPage, false));
+        return mav;
+    }
+
+    @GetMapping("/update")
+    public ModelAndView showUpdateForm(@RequestParam long id) {
+        ModelAndView mav = new ModelAndView("admin/edit_song");
+        mav.addObject("track", songService.findById(id).orElse(null));
+        return mav;
+    }
+
+    @PatchMapping("/update")
+    public String updateTrack(@ModelAttribute Song song) {
+        songService.update(song);
+        return "redirect:/admin/update-list";
+    }
+
 }

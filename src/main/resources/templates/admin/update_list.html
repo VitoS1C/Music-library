@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список для редактирования</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+</head>
+<body>
+<div th:replace="~{fragments/header :: navigation(isAnonimus=${#authentication.getPrincipal() eq 'anonymousUser'})}"></div>
+<div class="container">
+    <h3 th:if="${songs.songs.isEmpty()}">Ничего не найдено</h3>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Исполнитель</th>
+            <th>Название трека</th>
+            <th>Альбом</th>
+            <th>Ред.</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="song : ${songs.songs}">
+            <td id="singer" th:text="${song.singer}"/>
+            <td id="trackName" th:text="${song.trackName}"/>
+            <td th:text="${song.album}"/>
+            <td>
+                <a class="btn btn-info" th:href="@{/admin/update(id=${song.id})}">Edit</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <ul class="pagination">
+        <li class="page-item" th:if="${songs.pages > 0}">
+            <a class="page-link" th:href="@{/admin/update-list(page=0)}"><<</a>
+        </li>
+        <li class="page-item" th:if="${songs.pages  > 0 and currentPage != 0}">
+            <a class="page-link" th:href="@{/admin/update-list(page=${currentPage - 1})}"><</a>
+        </li>
+
+        <li class="page-item" th:each="pageNum : ${#numbers.sequence(1, songs.pages)}">
+            <a class="page-link"
+               th:href="@{/(page=${pageNum - 1})}"
+               th:class="${pageNum == currentPage} ? 'active' : ''" th:text="${pageNum + ','}">
+            </a>
+        </li>
+
+        <li class="page-item" th:if="${currentPage < songs.pages - 1}">
+            <a class="page-link" th:href="@{/admin/update-list(page=${currentPage + 1})}">></a>
+        </li>
+        <li class="page-item" th:if="${currentPage < songs.pages}">
+            <a class="page-link" th:href="@{/admin/update-list(page=${songs.pages - 1})}">>></a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

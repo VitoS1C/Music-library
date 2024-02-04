@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, maximum-scale=0.1, minimum-scale=1.0">
-    <title>Song Management System</title>
+    <title>Редактровать трек</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
@@ -13,26 +13,16 @@
     <hr/>
     <h3>Update song</h3>
     <hr/>
-    <form id="233" th:action="@{/updateSong}" th:object="${song}" method="POST">
-
-        <input type="text" id="singer" th:field="*{singer}" class="form-control col-4 mb-4" placeholder="Enter Singer"/>
-
+    <form id="233" th:action="@{/admin/update}" th:object="${track}" th:method="PATCH">
+        <input type="text" id="singer" th:field="*{singer}" class="form-control col-4 mb-4" placeholder="Исполнитель"/>
         <input type="text" id="trackName" th:field="*{trackName}" class="form-control col-4 mb-4"
-               placeholder="Enter Track name"/>
-
-        <input type="text" th:field="*{album}" class="form-control col-4 mb-4" placeholder="Enter album"/>
-
+               placeholder="Название трека"/>
+        <input type="text" th:field="*{album}" class="form-control col-4 mb-4" placeholder="Альбом"/>
         <input type="hidden" th:field="*{id}"/>
-
-        <form th:action="@{/updateSong}" th:object="${action}">
-            <input id="date" type="hidden" th:field="*{dateActions}"/>
-            <input id="description" type="hidden" th:field="*{description}"/>
-            <input type="hidden" th:field="*{id}"/>
-            <button id="press" type="submit" class="btn btn-primary col-2">Save</button>
-        </form>
+        <input type="submit" value="Сохранить">
     </form>
     <hr/>
-    <a th:href="@{/list}">Back to list</a>
+    <a th:href="@{/admin/update-list}">Back to list</a>
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
