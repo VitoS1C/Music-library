@@ -27,7 +27,7 @@ public interface SongService {
 
     SongsResponse getAll(Integer page, Integer songsPerPage, boolean withLinks);
 
-    SongsResponse findTrack(String name);
+    SongsResponse findTrack(String name, boolean withLinks);
 
     void update(Song song);
 }

@@ -55,9 +55,8 @@ public class AdminController {
         if (file.isEmpty())
             bindingResult.rejectValue("file", "file.empty", "Вы не выбрали файл!");
 
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors())
             return "admin/add_song";
-        }
 
         songService.save(song, file);
         storageService.store(file);
@@ -84,6 +83,15 @@ public class AdminController {
     public String updateTrack(@ModelAttribute Song song) {
         songService.update(song);
         return "redirect:/admin/update-list";
+    }
+
+    @GetMapping("search")
+    public ModelAndView findTracks(@RequestParam String query,
+                                   @RequestParam(required = false, defaultValue = "0") Integer page) {
+        ModelAndView mav = new ModelAndView("admin/update_list");
+        mav.addObject("songs", songService.findTrack(query, false));
+        mav.addObject("currentPage", page);
+        return mav;
     }
 
 }

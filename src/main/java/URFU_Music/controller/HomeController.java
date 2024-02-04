@@ -39,7 +39,7 @@ public class HomeController {
     public ModelAndView findTracks(@RequestParam String query,
                                    @RequestParam(required = false, defaultValue = "0") Integer page) {
         ModelAndView mav = new ModelAndView("home/index");
-        mav.addObject("songs", songService.findTrack(query));
+        mav.addObject("songs", songService.findTrack(query, true));
         mav.addObject("currentPage",page);
 
         if (userService.findCurrentUser() != null) {

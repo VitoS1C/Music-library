@@ -11,6 +11,12 @@
 <body>
 <div th:replace="~{fragments/header :: navigation(isAnonimus=${#authentication.getPrincipal() eq 'anonymousUser'})}"></div>
 <div class="container">
+    <form th:method="GET" th:action="@{/admin/search}">
+        <br/>
+        <input type="text" class="description-from-type-label" placeholder="Поиск музыки" name="query">
+        <input class="btn-success" type="submit" value="Найти">
+        <hr/>
+    </form>
     <h3 th:if="${songs.songs.isEmpty()}">Ничего не найдено</h3>
     <table class="table table-bordered table-striped">
         <thead>

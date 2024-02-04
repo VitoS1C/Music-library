@@ -100,14 +100,22 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
-    public SongsResponse findTrack(String query) {
-        List<Song> songs = songRepository.findBySingerStartingWithOrTrackNameStartingWithOrAlbumStartingWith(query, query, query).stream()
-                .peek(song -> song.getMusicFile().setLink(MvcUriComponentsBuilder.fromMethodName(SongController.class,
-                                "serveFile", storageService.load(song.getMusicFile().getFilename())
-                                        .getFileName().toString())
-                        .build().toUri().toString())).collect(Collectors.toList());
+    public SongsResponse findTrack(String query, boolean withLinks) {
+        if (withLinks) {
+            List<Song> songs = songRepository
+                    .findBySingerStartingWithOrTrackNameStartingWithOrAlbumStartingWith(query, query, query).stream()
+                    .peek(song -> song.getMusicFile().setLink(MvcUriComponentsBuilder.fromMethodName(SongController.class,
+                                    "serveFile", storageService.load(song.getMusicFile().getFilename())
+                                            .getFileName().toString())
+                            .build().toUri().toString())).collect(Collectors.toList());
 
-        return new SongsResponse(songs, 1, songs.size());
+            return new SongsResponse(songs, 1, songs.size());
+        } else {
+            List<Song> songs = songRepository
+                    .findBySingerStartingWithOrTrackNameStartingWithOrAlbumStartingWith(query, query, query);
+
+            return new SongsResponse(songs, 1, songs.size());
+        }
     }
 
     @Override
