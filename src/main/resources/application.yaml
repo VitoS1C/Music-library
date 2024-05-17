@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/urfu_music
+    username: postgres
+    password: bnxpost
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+  main:
+    allow-circular-references: true
+
+  servlet:
+    multipart:
+      max-request-size: -1
+      max-file-size: -1
+
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+storageLocation: music
