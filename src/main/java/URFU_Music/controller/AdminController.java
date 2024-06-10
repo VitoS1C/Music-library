@@ -50,7 +50,7 @@ public class AdminController {
 
     @PostMapping("/save")
     public String saveSong(@RequestParam("file") MultipartFile file, @Valid @ModelAttribute Song song,
-                           BindingResult bindingResult, Model model) {
+                           BindingResult bindingResult) {
         song.setFile(file);
         if (file.isEmpty())
             bindingResult.rejectValue("file", "file.empty", "Вы не выбрали файл!");
@@ -68,7 +68,7 @@ public class AdminController {
                                        @RequestParam(required = false, defaultValue = "20") Integer songsPerPage) {
         ModelAndView mav = new ModelAndView("admin/update_list");
         mav.addObject("currentPage", page);
-        mav.addObject("songs", songService.getAll(page, songsPerPage, false));
+        mav.addObject("songs", songService.getAll(page, songsPerPage));
         return mav;
     }
 
@@ -89,7 +89,7 @@ public class AdminController {
     public ModelAndView findTracks(@RequestParam String query,
                                    @RequestParam(required = false, defaultValue = "0") Integer page) {
         ModelAndView mav = new ModelAndView("admin/update_list");
-        mav.addObject("songs", songService.findTrack(query, false));
+        mav.addObject("songs", songService.findTrack(query));
         mav.addObject("currentPage", page);
         return mav;
     }

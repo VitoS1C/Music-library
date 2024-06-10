@@ -49,17 +49,9 @@ public class SongController {
         return "redirect:/";
     }
 
-    @GetMapping("/music/{filename:.+}")
+    @GetMapping("/music/{filename}")
     @ResponseBody
-    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-
-        Resource file = storageService.loadAsResource(filename);
-
-        if (file == null)
-            return ResponseEntity.notFound().build();
-
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+    public ResponseEntity<Resource> getFile(@PathVariable String filename) {
+        return songService.getMusicFile(filename);
     }
-
 }

@@ -25,7 +25,7 @@ public class HomeController {
     public ModelAndView index(@RequestParam(required = false, defaultValue = "0") Integer page,
                               @RequestParam(required = false, defaultValue = "20") Integer songsPerPage) {
         ModelAndView mav = new ModelAndView("home/index");
-        mav.addObject("songs", songService.getAll(page, songsPerPage, true));
+        mav.addObject("songs", songService.getAll(page, songsPerPage));
         mav.addObject("currentPage", page);
 
         if (userService.findCurrentUser() != null) {
@@ -39,7 +39,7 @@ public class HomeController {
     public ModelAndView findTracks(@RequestParam String query,
                                    @RequestParam(required = false, defaultValue = "0") Integer page) {
         ModelAndView mav = new ModelAndView("home/index");
-        mav.addObject("songs", songService.findTrack(query, true));
+        mav.addObject("songs", songService.findTrack(query));
         mav.addObject("currentPage",page);
 
         if (userService.findCurrentUser() != null) {

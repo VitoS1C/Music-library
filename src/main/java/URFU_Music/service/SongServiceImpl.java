@@ -1,52 +1,33 @@
 package URFU_Music.service;
 
-import URFU_Music.controller.SongController;
 import URFU_Music.dto.SongsResponse;
-import URFU_Music.entity.MusicFile;
 import URFU_Music.entity.Song;
 import URFU_Music.entity.User;
 import URFU_Music.repository.SongRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
+@RequiredArgsConstructor()
 public class SongServiceImpl implements SongService {
     private final SongRepository songRepository;
     private final UserService userService;
     private final StorageService storageService;
 
-    @Autowired
-    public SongServiceImpl(SongRepository songRepository, UserService userService, StorageService storageService) {
-        this.songRepository = songRepository;
-        this.userService = userService;
-        this.storageService = storageService;
-    }
-
     @Override
-    public SongsResponse getAll(Integer page, Integer songsPerPage, boolean withLinks) {
+    public SongsResponse getAll(Integer page, Integer songsPerPage) {
         SongsResponse songsResponse = new SongsResponse();
-
-        if (withLinks) {
-            songsResponse.setSongs(songRepository.findAll(PageRequest.of(page, songsPerPage)).getContent().stream().peek(
-                    song -> song.getMusicFile()
-                            .setLink(MvcUriComponentsBuilder.fromMethodName(SongController.class,
-                                            "serveFile", storageService.load(song.getMusicFile().getFilename())
-                                                    .getFileName().toString())
-                                    .build().toUri().toString())).collect(Collectors.toList())
-            );
-        } else {
-            songsResponse.setSongs(songRepository.findAll(PageRequest.of(page, songsPerPage)).getContent());
-        }
-
+        songsResponse.setSongs(songRepository.findAll(PageRequest.of(page, songsPerPage)).getContent());
         songsResponse.setPages(songRepository.findAll(PageRequest.of(page, songsPerPage)).getTotalPages());
         songsResponse.setElements(songRepository.findAll(PageRequest.of(page, songsPerPage)).getNumberOfElements());
         return songsResponse;
@@ -55,20 +36,13 @@ public class SongServiceImpl implements SongService {
     @Override
     public List<Song> getUsersSongs() {
         User currentUser = userService.findCurrentUser();
-        return currentUser.getSongs().stream().peek(song -> song.getMusicFile()
-                        .setLink(MvcUriComponentsBuilder.fromMethodName(SongController.class,
-                        "serveFile", storageService.load(song.getMusicFile().getFilename())
-                                .getFileName().toString())
-                .build().toUri().toString()))
-                .collect(Collectors.toList());
+        return currentUser.getSongs();
     }
 
     @Override
     @Transactional
     public void save(Song song, MultipartFile file) {
-        MusicFile musicFile = new MusicFile();
-        musicFile.setFilename(file.getOriginalFilename());
-        song.setMusicFile(musicFile);
+        song.setFileName(file.getOriginalFilename());
         songRepository.save(song);
     }
 
@@ -77,11 +51,11 @@ public class SongServiceImpl implements SongService {
         return songRepository.findById(songId);
     }
 
-    @Override
-    @Transactional
-    public void deleteById(Long songId) {
-        songRepository.deleteById(songId);
-    }
+//    @Override
+//    @Transactional
+//    public void deleteById(Long songId) {
+//        songRepository.deleteById(songId);
+//    }
 
     @Transactional
     @Override
@@ -100,28 +74,29 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
-    public SongsResponse findTrack(String query, boolean withLinks) {
-        if (withLinks) {
-            List<Song> songs = songRepository
-                    .findBySingerStartingWithOrTrackNameStartingWithOrAlbumStartingWith(query, query, query).stream()
-                    .peek(song -> song.getMusicFile().setLink(MvcUriComponentsBuilder.fromMethodName(SongController.class,
-                                    "serveFile", storageService.load(song.getMusicFile().getFilename())
-                                            .getFileName().toString())
-                            .build().toUri().toString())).collect(Collectors.toList());
-
-            return new SongsResponse(songs, 1, songs.size());
-        } else {
-            List<Song> songs = songRepository
+    public SongsResponse findTrack(String query) {
+        List<Song> songs = songRepository
                     .findBySingerStartingWithOrTrackNameStartingWithOrAlbumStartingWith(query, query, query);
 
-            return new SongsResponse(songs, 1, songs.size());
-        }
+        return new SongsResponse(songs, 1, songs.size());
+
     }
 
     @Override
     @Transactional
     public void update(Song song) {
-        songRepository.findById(song.getId()).ifPresent(existingSong -> song.setMusicFile(existingSong.getMusicFile()));
+        songRepository.findById(song.getId()).ifPresent(existingSong -> song.setFileName(existingSong.getFileName()));
         songRepository.save(song);
+    }
+
+    @Override
+    public ResponseEntity<Resource> getMusicFile(String filename) {
+        Resource file = storageService.loadAsResource(filename);
+
+        if (file == null)
+            return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                STR."attachment; filename=\"\{file.getFilename()}\"").body(file);
     }
 }

@@ -2,6 +2,8 @@ package URFU_Music.service;
 
 import URFU_Music.dto.SongsResponse;
 import URFU_Music.entity.Song;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,8 +18,8 @@ public interface SongService {
 
     Optional<Song> findById(Long songId);
 
-    @Transactional
-    void deleteById(Long songId);
+//    @Transactional
+//    void deleteById(Long songId);
 
     @Transactional
     void removeFromList(long id);
@@ -25,9 +27,11 @@ public interface SongService {
     @Transactional
     void addToList(long id);
 
-    SongsResponse getAll(Integer page, Integer songsPerPage, boolean withLinks);
+    SongsResponse getAll(Integer page, Integer songsPerPage);
 
-    SongsResponse findTrack(String name, boolean withLinks);
+    SongsResponse findTrack(String name);
 
     void update(Song song);
+
+    ResponseEntity<Resource> getMusicFile(String filename);
 }

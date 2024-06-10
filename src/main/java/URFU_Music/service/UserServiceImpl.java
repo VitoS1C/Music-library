@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService{
         userDto.setFirstName(str[0]);
         userDto.setLastName(str[1]);
         userDto.setEmail(user.getEmail());
-        if (user.getRoles().get(0).getName().equals("ROLE_ADMIN")) {
+        if (user.getRoles().getFirst().getName().equals("ROLE_ADMIN")) {
             userDto.setRole("Administrator");
         }else {
             userDto.setRole("User");
@@ -86,10 +86,4 @@ public class UserServiceImpl implements UserService{
         role.setName("ROLE_USER");
         return roleRepository.save(role);
     }
-
-    @Override
-    public void deleteUser(long id) {
-        userRepository.deleteById(id);
-    }
-
 }

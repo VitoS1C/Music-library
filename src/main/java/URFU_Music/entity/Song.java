@@ -29,17 +29,10 @@ public class Song {
     @Column(nullable = false)
     private String album;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "music_file_id")
-    private MusicFile musicFile;
+    private String fileName;
 
     @ManyToMany(mappedBy = "songs", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<User> users;
-
-    public void setMusicFile(MusicFile musicFile) {
-        musicFile.setSong(this);
-        this.musicFile = musicFile;
-    }
 
     @Transient
     private MultipartFile file;

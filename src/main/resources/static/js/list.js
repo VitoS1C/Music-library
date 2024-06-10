@@ -36,8 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadAudio(index) {
         const audioSrc = playButtons[index]?.parentNode?.getAttribute('data-src');
         if (audioSrc) {
+            const link = 'songs/music/' + audioSrc
             trackSinger.innerText = updateTrackText(index)
-            audioPlayer.src = audioSrc
+            audioPlayer.src = link
             audioPlayer.load()
             audioPlayer.play()
         }

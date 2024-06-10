@@ -33,7 +33,7 @@
                 <td id="singer" th:text="${song.singer}"/>
                 <td id="trackName" th:text="${song.getTrackName()}"/>
                 <td th:text="${song.album}"/>
-                <td th:data-src="${song.getMusicFile().getLink()}">
+                <td th:data-src="${song.fileName}">
                     <button class="playButton">&#9199;</button>
                 </td>
                 <td th:if="${#authentication.principal ne 'anonymousUser'}">
