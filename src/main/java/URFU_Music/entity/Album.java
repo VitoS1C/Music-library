@@ -27,6 +27,9 @@ public class Album {
     @Column(name = "release_year")
     private int releaseYear;
 
+    @OneToMany(mappedBy = "album")
+    private List<Song> songs = new ArrayList<>();
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "artist_id")
     private Artist artist;
