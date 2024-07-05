@@ -14,33 +14,24 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Builder
-@Table(name = "song")
-public class Song {
+@Table(name = "album")
+public class Album {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String trackName;
+    @Column(name = "title")
+    private String title;
 
-    @Column(nullable = false)
-    private String album;
-
-    private String fileName;
+    @Column(name = "release_year")
+    private int releaseYear;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "artist_id")
     private Artist artist;
 
     @Builder.Default
-    @OneToMany(mappedBy = "song")
-    private List<FavoriteSongs> favoriteSongs = new ArrayList<>();
-
-    @ManyToOne
-    @JoinColumn(name = "playlist_id")
-    private Playlist playlist;
-
-    @Builder.Default
-    @OneToMany(mappedBy = "user")
+    @OneToMany
     private List<FavoriteAlbums> favoriteAlbums = new ArrayList<>();
 }

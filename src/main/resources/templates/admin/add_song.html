@@ -15,7 +15,7 @@
     <hr/>
     <form id="233" th:action="@{/admin/save}"  th:method="POST" enctype="multipart/form-data" th:object="${song}">
 
-        <input type="text" id="singer" th:field="*{singer}" class="form-control col-4 mb-4" placeholder="Исполнитель"/>
+        <input type="text" id="singer" th:field="*{getArtist}" class="form-control col-4 mb-4" placeholder="Исполнитель"/>
 
         <input type="text" id="trackName" th:field="*{trackName}" class="form-control col-4 mb-4"
                placeholder="Название трека"/>

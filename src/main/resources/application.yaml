@@ -1,13 +1,13 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/urfu_music
+    url: jdbc:postgresql://localhost:5432/music_repository_api
     username: postgres
     password: bnxpost
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     show-sql: false
 
   main:

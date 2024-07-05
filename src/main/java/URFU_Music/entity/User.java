@@ -1,19 +1,16 @@
 package URFU_Music.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 @Table(name ="users")
 public class User {
     @Id
@@ -37,11 +34,18 @@ public class User {
     )
     private List<Role> roles = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "users_songs",
-            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "song_id", referencedColumnName = "id")}
-    )
-    private List<Song> songs;
+    @Builder.Default
+    @OneToMany(mappedBy = "user")
+    private List<FavoriteSongs> favoriteSongs = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Playlist> playlists = new ArrayList<>();
+
+    @Builder.Default
+    @OneToMany(mappedBy = "user")
+    private List<FavoriteAlbums> favoriteAlbums = new ArrayList<>();
+
+    @Builder.Default
+    @OneToMany(mappedBy = "user")
+    private List<FavoriteArtists> favoriteArtists = new ArrayList<>();
 }

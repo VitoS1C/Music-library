@@ -29,7 +29,7 @@
         </thead>
         <tbody>
         <tr th:each="song : ${songs.songs}">
-            <td id="singer" th:text="${song.singer}"/>
+            <td id="singer" th:text="${song.getArtist}"/>
             <td id="trackName" th:text="${song.trackName}"/>
             <td th:text="${song.album}"/>
             <td>
