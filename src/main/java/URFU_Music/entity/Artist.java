@@ -27,7 +27,7 @@ public class Artist {
     @OneToMany(mappedBy = "artist")
     private List<Song> songs = new ArrayList<>();
 
-    @OneToMany(mappedBy = "album")
+    @OneToMany(mappedBy = "artist")
     private List<Album> albums = new ArrayList<>();
 
     @Builder.Default

@@ -32,6 +32,6 @@ public class Album {
     private Artist artist;
 
     @Builder.Default
-    @OneToMany
+    @OneToMany(mappedBy = "album")
     private List<FavoriteAlbums> favoriteAlbums = new ArrayList<>();
 }

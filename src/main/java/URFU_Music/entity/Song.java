@@ -20,12 +20,10 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "track_name")
     private String trackName;
 
-    @Column(nullable = false)
-    private String album;
-
+    @Column(nullable = false, name = "file_name")
     private String fileName;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -39,8 +37,4 @@ public class Song {
     @ManyToOne
     @JoinColumn(name = "playlist_id")
     private Playlist playlist;
-
-    @Builder.Default
-    @OneToMany(mappedBy = "user")
-    private List<FavoriteAlbums> favoriteAlbums = new ArrayList<>();
 }
